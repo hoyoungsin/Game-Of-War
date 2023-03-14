@@ -55,36 +55,81 @@ class GameOfWar {
 
     //game start function
     startGame() {
-        let p1Card = this.p1.shift();
-        let p2Card = this.p2.shift();
-        console.log(p1Card);
-        console.log(p2Card);
-        // while(this.p1.length !== 0 && this.p2.length !== 0){
+        while(this.p1.length !== 0 && this.p2.length !== 0) {
+            let p1Card = this.p1.pop();
+            let p2Card = this.p2.pop();
+            console.log(`Player 1 played ${p1Card.rank} of ${p1Card.suit}s. Player 2 played ${p2Card.rank} of ${p2Card.suit}s.`);
+            // console.log(p1Card);
+            // console.log(p2Card);
             if(p1Card.value > p2Card.value) {
-                console.log(`Player 1 played ${p1Card.rank} of ${p1Card.suit}s. Player 2 played ${p2Card.rank} of ${p2Card.suit}s. Player 1 wins!`);
-                this.p1.push(this.p2Card, this.p1Card, ...this.pile);
+                console.log(`Player 1 wins!`);
+                this.p1.unshift(p1Card, p2Card, ...this.pile);
                 this.pile = [];
             } else if(p1Card.value < p2Card.value) {
-                console.log(`Player 1 played ${p1Card.rank} of ${p1Card.suit}s. Player 2 played ${p2Card.rank} of ${p2Card.suit}s. Player 2 wins!`);
-                this.p2.push(this.p1Card, this.p2Card, ...this.pile);
+                console.log(`Player 2 wins!`);
+                this.p2.unshift(p1Card, p2Card, ...this.pile);
                 this.pile = [];
-                // console.log(this.p2)
-            } else {
+            } else if(p1Card.value === p2Card.value) {
                 console.log("War!");
-                this.pile.push(this.p1Card, this.p2Card);
-                this.war;
-                // console.log(this.pile);
+                this.pile.push(p1Card, p2Card);
+                this.war();
+            } else {
+                if (this.p1.length === 0) {
+                    console.log ("Player 1 is out of Cards. PLayer 2 wins!")
+                } else {
+                    console.log ("Player 2 is out of Cards. PLayer 1 wins!")
+                }
             }
-        // }
+        }
+        
+        if (this.p1.length === 0) {
+            console.log ("Player 1 is out of Cards. PLayer 2 wins!")
+        } else {
+            console.log ("Player 2 is out of Cards. PLayer 1 wins!")
+        }
         
     }
+    
     war() {
+        console.log("I-Declare-WAR!");
+        // console.log(this.p1)
+        // console.log(this.p2)
         //adjust edge cases (if not enough cards)
-        // ... means spread array objects out as opposed to the array itself
-        // burn 3 cars each player
-        this.pile.push(...this.p1.splice(0,3))
-        this.pile.push(...this.p2.splice(0,3))
+        if (this.p1.length === 0) {
+            console.log("Stalemate")
+        } else if (this.p1.length === 1) {
+            console.log("Player 1 Last Hope!")
+        } else if (this.p1.length === 2) {
+            let onlyTwo = this.p1.splice(0,1);
+            this.pile.push(...onlyTwo);
+        } else if (this.p1.length === 3) {
+            let onlyThree = this.p1.splice(0,2);
+            this.pile.push(...onlyThree);
+        } else {
+            let pileUp1 = this.p1.splice(0,3);
+            //... spreads array object out as opposed to the array itself
+            this.pile.push(...pileUp1);
+            // console.log(this.pile)
+        }
+
+
+        if (this.p2.length > 3) {
+            let pileUp2 = this.p2.splice(0,3);
+            //... spreads array object out as opposed to the array itself
+            this.pile.push(...pileUp2);
+        } else if (this.p2.length === 3) {
+            let onlyThree = this.p2.splice(0,2);
+            this.pile.push(...onlyThree);
+        } else if (this.p2.length === 2) {
+            let onlyTwo = this.p2.splice(0, 1);
+            this.pile.push(...onlyTwo);
+        } else if (this.p2.length === 1) {
+            console.log("Player 2 Last Hope!")
+        } else {
+            console.log("Stalemate")
+        }
     }
 }
+
 
 const war = new GameOfWar;
