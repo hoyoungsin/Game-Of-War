@@ -111,7 +111,7 @@ class GameOfWar {
             this.pile.push(...pileUp1);
             // console.log(this.pile)
         }
-
+        
 
         if (this.p2.length > 3) {
             let pileUp2 = this.p2.splice(0,3);
