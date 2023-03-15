@@ -39,10 +39,10 @@ class GameOfWar {
         this.pile = [];
         //creates deck and splits game
         this.deck = new Deck;
-        // console.log(this.deck);
+        console.log(this.deck);
         this.splitDeck();
-        // console.log(this.p1);
-        // console.log(this.p2);
+        console.log(this.p1);
+        console.log(this.p2);
         //starts game
         this.startGame();
     }
@@ -59,8 +59,10 @@ class GameOfWar {
             let p1Card = this.p1.pop();
             let p2Card = this.p2.pop();
             console.log(`Player 1 played ${p1Card.rank} of ${p1Card.suit}s. Player 2 played ${p2Card.rank} of ${p2Card.suit}s.`);
-            // console.log(p1Card);
-            // console.log(p2Card);
+            console.log(p1Card);
+            console.log(p2Card);
+            console.log(this.p1)
+            console.log(this.p2)
             if(p1Card.value > p2Card.value) {
                 console.log(`Player 1 wins!`);
                 this.p1.unshift(p1Card, p2Card, ...this.pile);
@@ -92,8 +94,6 @@ class GameOfWar {
     
     war() {
         console.log("I-Declare-WAR!");
-        // console.log(this.p1)
-        // console.log(this.p2)
         //adjust edge cases (if not enough cards)
         if (this.p1.length === 0) {
             console.log("Stalemate")
@@ -101,32 +101,44 @@ class GameOfWar {
             console.log("Player 1 Last Hope!")
         } else if (this.p1.length === 2) {
             let onlyTwo = this.p1.splice(0,1);
+            console.log(onlyTwo)
+            console.log("Player 1 threw down 1 card.")
             this.pile.push(...onlyTwo);
         } else if (this.p1.length === 3) {
             let onlyThree = this.p1.splice(0,2);
+            console.log(onlyThree)
+            console.log("Player 1 threw down 2 cards.")
             this.pile.push(...onlyThree);
         } else {
             let pileUp1 = this.p1.splice(0,3);
+            console.log(pileUp1)
+            console.log("Player 1 threw down 3 cards.")
             //... spreads array object out as opposed to the array itself
             this.pile.push(...pileUp1);
-            // console.log(this.pile)
+            console.log(this.pile)
         }
         
-
-        if (this.p2.length > 3) {
-            let pileUp2 = this.p2.splice(0,3);
-            //... spreads array object out as opposed to the array itself
-            this.pile.push(...pileUp2);
-        } else if (this.p2.length === 3) {
-            let onlyThree = this.p2.splice(0,2);
-            this.pile.push(...onlyThree);
-        } else if (this.p2.length === 2) {
-            let onlyTwo = this.p2.splice(0, 1);
-            this.pile.push(...onlyTwo);
+        if (this.p2.length === 0) {
+            console.log("Stalemate")
         } else if (this.p2.length === 1) {
             console.log("Player 2 Last Hope!")
+        } else if (this.p2.length === 2) {
+            let onlyTwo = this.p2.splice(0, 1);
+            console.log(onlyTwo)
+            console.log("Player 2 threw down 1 card.")
+            this.pile.push(...onlyTwo);
+        } else if (this.p2.length === 3) {
+            let onlyThree = this.p2.splice(0,2);
+            console.log(onlyThree)
+            console.log("Player 2 threw down 2 card.")
+            this.pile.push(...onlyThree);
         } else {
-            console.log("Stalemate")
+            let pileUp2 = this.p2.splice(0,3);
+            console.log(pileUp2)
+            console.log("Player 2 threw down 3 card.")
+            //... spreads array object out as opposed to the array itself
+            this.pile.push(...pileUp2);
+            
         }
     }
 }
