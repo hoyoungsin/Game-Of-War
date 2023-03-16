@@ -1,104 +1,42 @@
-<!-- Headings -->
+# Game Of War (Javascript)
 
-# Heading 1
+A simulation of Game of War, a classic card game, in Javascript.
 
-## Heading 2
+## Getting Started
 
-### Heading 3
-
-#### Heading 4
-
-##### Heading 5
-
-###### Heading 6
-
-<!-- Italics -->
-
-_This text_ is italic
-
-_This text_ is italic
-
-<!-- Strong -->
-
-**This text** is italic
-
-**This text** is italic
-
-<!-- Strikethrough -->
-
-~~This text~~ is strikethrough
-
-<!-- Horizontal Rule -->
-
----
-
----
-
-<!-- Blockquote -->
-
-> This is a quote
-
-<!-- Links -->
-
-[Traversy Media](http://www.traversymedia.com)
-
-[Traversy Media](http://www.traversymedia.com "Traversy Media")
-
-<!-- UL -->
-
-- Item 1
-- Item 2
-- Item 3
-  - Nested Item 1
-  - Nested Item 2
-
-<!-- OL -->
-
-1. Item 1
-1. Item 2
-1. Item 3
-
-<!-- Inline Code Block -->
-
-`<p>This is a paragraph</p>`
-
-<!-- Images -->
-
-![Markdown Logo](https://markdown-here.com/img/icon256.png)
-
-<!-- Github Markdown -->
-
-<!-- Code Blocks -->
-
-```bash
-  npm install
-  npm start
+In order to runt on your local device, follow the following instrucctions.
+- Fork repository to target GitHub.
+- Clone repotsitory to local directory.
+- Run Javascript file in the cloned repository using the code snippet below.
+```
+node script.js
 ```
 
-```javascript
-function add(num1, num2) {
-  return num1 + num2;
-}
-```
+### Features
 
-```python
-  def add(num1, num2):
-    return num1 + num2
-```
+- Iterates a shuffled deck of cards 52.
+- When game is started, the deck is split in half and given to both players.
+- Each player plays a card and their values are compared.
+- Player with the higher value card will win and take winning cards.
+- In the case of a tie, War is started and each player throws down 3 cards. Each player plays one more card to compare. Winner takes all cards into their deck.
+  - War can repeat.
+  - In the case any player has less than 4 cards, the last card played will be compared.
 
-<!-- Tables -->
+### Planned Features
 
-| Day    | Deliverable                                      | Status                |
-| ------ | ------------------------------------------------ | --------------------- |
-| Dec 17 | Prompt/Wireframe/Priority Matrix/Timeframes      | xxx                   |
-| Dec 21 | Project Approval                                 | xxx                   |
-| Dec 22 | Core Application Structure (HTML, CSS, JS, etc.) | xxx                   |
-| Dec 23 | Pseudocode/Actual                                | xxx                   |
-| Dec 23 | 3 hrs                                            | MVP                   |
-| Jan 05 | 3 hrs                                            | Project Presentatiion |
+The following are planned features:
 
-<!-- Task List -->
+- Currently stalemate does not end game but game will run.
+- Change suits to symbols
+- Include player action for playing a card.
+- Include player action for shuffling player deck.
 
-- [x] Task 1
-- [x] Task 2
-- [] Task 3
+
+## Authors
+  - **Hoyoung Sin** - *Created README and script*
+  - **Billie Thompson** - *Provided README Template* -
+    [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of
+[contributors](https://github.com/PurpleBooth/a-good-readme-template/contributors)
+who participated in this project.

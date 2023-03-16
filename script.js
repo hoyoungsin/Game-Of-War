@@ -23,6 +23,7 @@ class Deck {
         }
         //run shuffle
         this.shuffle()
+        console.log("Deck Shuffled")
     }
     //shuffles array
     shuffle() {
@@ -51,10 +52,14 @@ class GameOfWar {
     splitDeck() {
         this.p1 = this.deck.cards.slice(0, 26);
         this.p2 = this.deck.cards.slice(26, 52);
+        console.log(`P1 was given ${this.p1.length} cards.`);
+        console.log(`P2 was given ${this.p2.length} cards.`);
+
     }
 
     //game start function
     startGame() {
+        console.log("War Start!")
         while(this.p1.length !== 0 && this.p2.length !== 0) {
             let p1Card = this.p1.pop();
             let p2Card = this.p2.pop();
@@ -65,38 +70,34 @@ class GameOfWar {
             // console.log(this.p2)
             if(p1Card.value > p2Card.value) {
                 console.log(`Player 1 wins!`);
+                console.log(`P1 has ${this.p1.length} cards left.`);
+                console.log(`P2 has ${this.p2.length} cards left.`);
                 this.p1.unshift(p1Card, p2Card, ...this.pile);
                 this.pile = [];
             } else if(p1Card.value < p2Card.value) {
                 console.log(`Player 2 wins!`);
+                console.log(`P1 has ${this.p1.length} cards left.`);
+                console.log(`P2 has ${this.p2.length} cards left.`);
                 this.p2.unshift(p1Card, p2Card, ...this.pile);
                 this.pile = [];
-            } else if(p1Card.value === p2Card.value) {
+            } else {
                 console.log("War!");
                 this.pile.push(p1Card, p2Card);
                 this.war();
-            } else {
-                if (this.p1.length === 0) {
-                    console.log ("Player 1 is out of Cards. PLayer 2 wins!")
-                } else {
-                    console.log ("Player 2 is out of Cards. PLayer 1 wins!")
-                }
             }
         }
-        
         if (this.p1.length === 0) {
             console.log ("Player 1 is out of Cards. PLayer 2 wins!")
         } else {
             console.log ("Player 2 is out of Cards. PLayer 1 wins!")
         }
-        
     }
     
     war() {
         console.log("I-Declare-WAR!");
         //adjust edge cases (if not enough cards)
         if (this.p1.length === 0) {
-            console.log("Stalemate")
+            console.log("Stalemate");
         } else if (this.p1.length === 1) {
             console.log("Player 1 Last Hope!")
         } else if (this.p1.length === 2) {
@@ -119,7 +120,7 @@ class GameOfWar {
         }
         
         if (this.p2.length === 0) {
-            console.log("Stalemate")
+            console.log("Stalemate");
         } else if (this.p2.length === 1) {
             console.log("Player 2 Last Hope!")
         } else if (this.p2.length === 2) {
